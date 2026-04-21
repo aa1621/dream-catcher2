@@ -1,6 +1,6 @@
 # Dream Journal App
 
-A full-stack web application that allows users to record their dreams and receive AI-powered interpretations using Claude.
+A full-stack web application that allows users to record their dreams and receive AI-powered interpretations using gpt-4o-mini.
 
 ## Features
 
@@ -8,16 +8,16 @@ A full-stack web application that allows users to record their dreams and receiv
 - Get AI interpretations of your dreams
 - View all past dreams and their interpretations
 - Delete dreams
-- SQLite database for persistent storage
+- Postgres database for persistent storage
 - Vanilla JavaScript frontend
 - Express backend with RESTful API
 
 ## Tech Stack
 
 - **Backend**: Node.js, Express
-- **Database**: SQLite (better-sqlite3)
+- **Database**: Postgres
 - **Frontend**: HTML, CSS, Vanilla JavaScript
-- **AI**: Anthropic Claude API
+- **AI**: GPT 4o-mini
 
 ## Project Structure
 
@@ -27,7 +27,7 @@ dream-journal/
 ├── package.json        # Dependencies and scripts
 ├── .env               # Environment variables (create this)
 ├── .env.example       # Example env file
-├── dreams.db          # SQLite database (auto-created)
+├── dreams.db          # SQLite database (auto-created, not in use any more)
 └── public/
     ├── index.html     # Frontend HTML
     ├── styles.css     # Styles
@@ -53,7 +53,7 @@ cp .env.example .env
 Edit `.env` and add your Anthropic API key:
 
 ```
-ANTHROPIC_API_KEY=your_api_key_here
+OPENAI_API_KEY=your_api_key_here
 PORT=3000
 ```
 
@@ -100,7 +100,7 @@ Make sure your code is in a Git repository (GitHub, GitLab, etc.)
 ### 3. Add Environment Variables
 
 In the Render dashboard, add:
-- `ANTHROPIC_API_KEY`: Your Anthropic API key
+- `OPENAI_API_KEY`: Your OpenAI API key
 
 ### 4. Deploy
 
@@ -108,7 +108,7 @@ Click "Create Web Service" and Render will deploy your app automatically.
 
 ### 5. Database Persistence
 
-Note: The SQLite database file will be stored in Render's ephemeral filesystem. For production, consider:
+Note: If using SQLite, the SQLite database file will be stored in Render's ephemeral filesystem. For production, consider:
 - Using Render's persistent disk feature
 - Migrating to PostgreSQL for better persistence
 - Backing up data regularly
